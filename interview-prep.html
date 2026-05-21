@@ -679,7 +679,10 @@ body {
       <span>Questions to Ask</span>
     </button>
   </nav>
-  <div class="topbar-pill">CTO · CEO Round</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="./index.html" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);text-decoration:none;font-family:inherit;font-size:12px;font-weight:600;padding:7px 14px;border-radius:6px;letter-spacing:0.3px;transition:all 0.18s;" onmouseover="this.style.background='rgba(0,176,185,0.2)';this.style.borderColor='rgba(0,176,185,0.5)';this.style.color='#00B0B9'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.8)'">⌂ Home</a>
+    <div class="topbar-pill">CTO · CEO Round</div>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -951,6 +954,7 @@ body {
     <button class="tech-tab" onclick="showTech('purview', this)"><span class="tab-dot"></span>Purview</button>
     <button class="tech-tab" onclick="showTech('agentic', this)"><span class="tab-dot"></span>Agentic AI</button>
     <button class="tech-tab" onclick="showTech('responsible', this)"><span class="tab-dot"></span>Responsible AI</button>
+    <button class="tech-tab" onclick="showTech('acronyms', this)"><span class="tab-dot"></span>Acronyms A–Z</button>
   </div>
 
   <!-- AZURE -->
@@ -1172,7 +1176,272 @@ body {
     <div class="key-phrase"><strong>The key insight for the CTO interview</strong>"Responsible AI isn't the reason we do AI slowly — it's the reason customers buy AI confidently. In regulated sectors, the governance design is the commercial unlock."</div>
   </div>
 
-</div><!-- /section-tech -->
+  <!-- ACRONYMS -->
+  <div id="tech-acronyms" class="tech-panel">
+    <div class="tech-hero-card">
+      <div class="tech-hero-eyebrow">Quick Reference</div>
+      <h3>AI Acronyms A–Z</h3>
+      <p>The terms you'll hear in the room — from the CTO, from customers, and in Simpson's own content. Plain English, no jargon. Click any card for a fuller explanation.</p>
+    </div>
+
+    <style>
+      .acro-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-bottom: 24px; }
+      .acro-card { background: white; border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; cursor: pointer; transition: all 0.18s; }
+      .acro-card:hover { border-color: var(--teal); box-shadow: 0 4px 16px rgba(15,45,82,0.08); }
+      .acro-card.open { border-color: var(--navy); background: #f0f7f8; }
+      .acro-abbr { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 4px; font-family: 'Fraunces', serif; font-style: italic; }
+      .acro-full { font-size: 12px; color: var(--teal-deep,#008B92); font-weight: 600; letter-spacing: 0.3px; margin-bottom: 8px; }
+      .acro-short { font-size: 13px; color: var(--mute); line-height: 1.5; }
+      .acro-detail { display: none; font-size: 13px; color: var(--ink); line-height: 1.6; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+      .acro-card.open .acro-detail { display: block; }
+      .acro-section-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); font-weight: 700; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
+      .acro-section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    </style>
+
+    <div class="acro-section-label">Core AI concepts</div>
+    <div class="acro-grid">
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">LLM</div>
+        <div class="acro-full">Large Language Model</div>
+        <div class="acro-short">The AI brain behind ChatGPT, Claude, Gemini and Azure OpenAI.</div>
+        <div class="acro-detail">A neural network trained on vast amounts of text that can understand and generate human language. GPT-4, Claude 3, Gemini — all LLMs. They predict the most likely next token given everything before it. Simpson's custom AI solutions are built on top of LLMs via Azure OpenAI.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">RAG</div>
+        <div class="acro-full">Retrieval-Augmented Generation</div>
+        <div class="acro-short">How you give an AI access to your own documents and data.</div>
+        <div class="acro-detail">Instead of relying only on what the model was trained on, RAG retrieves relevant chunks from a knowledge base (documents, databases, SharePoint) and feeds them into the prompt as context. This is how RedactXpert and the AI Front-Door "know" about the customer's own data. Prevents hallucination by grounding answers in real sources.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">MCP</div>
+        <div class="acro-full">Model Context Protocol</div>
+        <div class="acro-short">A standard that lets AI models connect to external tools and data sources.</div>
+        <div class="acro-detail">An open protocol (originally from Anthropic, now widely adopted) that defines how AI models talk to external systems — databases, APIs, file systems, calendars. Think of it as a universal plug socket for AI integrations. Claude in Claude.ai uses MCP to connect to things like GitHub, HubSpot and Xero. In agentic architectures, agents use MCP to call tools.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">GPT</div>
+        <div class="acro-full">Generative Pre-trained Transformer</div>
+        <div class="acro-short">The model architecture behind OpenAI's models and Azure OpenAI.</div>
+        <div class="acro-detail">The architecture underpinning OpenAI's models (GPT-3, GPT-4, GPT-4o). "Generative" = produces output. "Pre-trained" = trained on large text datasets before fine-tuning. "Transformer" = the neural network architecture. You don't need to understand the maths — just that GPT is OpenAI's model family, and Azure OpenAI gives enterprise-grade access to it.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">SLM</div>
+        <div class="acro-full">Small Language Model</div>
+        <div class="acro-short">A lighter, faster, cheaper AI model for specific tasks.</div>
+        <div class="acro-detail">A smaller, more focused model trained for a specific domain (e.g. legal documents, medical records, code). Cheaper to run, faster to respond, easier to deploy on-premise. Ashley's agentic AI blog mentions SLMs as part of the architecture — a specialised agent might use an SLM for a narrow task rather than a full LLM. Microsoft Phi is a popular SLM family.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">NLP</div>
+        <div class="acro-full">Natural Language Processing</div>
+        <div class="acro-short">The older term for AI that understands and processes human language.</div>
+        <div class="acro-detail">The field of AI concerned with understanding text and speech. Pre-LLM, NLP covered things like sentiment analysis, entity extraction, translation. LLMs have largely superseded traditional NLP for most tasks, but the term still appears in job descriptions and older documentation. If someone says "NLP capability" they broadly mean AI that understands language.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">GenAI</div>
+        <div class="acro-full">Generative AI</div>
+        <div class="acro-short">AI that creates new content — text, images, code, data.</div>
+        <div class="acro-detail">The category of AI (LLMs, image generators, code assistants) that produces new content rather than just classifying or predicting. ChatGPT, Copilot, Midjourney, GitHub Copilot are all GenAI. Distinct from predictive/discriminative AI (which classifies existing data). Most of Simpson's current AI proposition is GenAI-based.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">ML</div>
+        <div class="acro-full">Machine Learning</div>
+        <div class="acro-short">AI that learns patterns from data to make predictions.</div>
+        <div class="acro-detail">The broader field of algorithms that learn from data without being explicitly programmed. LLMs are a type of ML, but ML also covers classical approaches like regression, decision trees, random forests. Simpson's demand forecasting (boiler failure prediction, arrears risk) uses ML. Qlik AutoML lets you build ML models from your BI data without writing code.</div>
+      </div>
+
+    </div>
+
+    <div class="acro-section-label">Data & platform terms</div>
+    <div class="acro-grid">
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">ETL</div>
+        <div class="acro-full">Extract, Transform, Load</div>
+        <div class="acro-short">The process of moving data from source systems into a data platform.</div>
+        <div class="acro-detail">Extract data from a source (a database, API, spreadsheet), Transform it (clean, reshape, join, aggregate), Load it into a destination (a data warehouse, lake, or Fabric OneLake). This is what your Gemini ETL Bot automated. In Simpson's world, Fabric pipelines, Databricks notebooks and Azure Data Factory all perform ETL. ELT (Extract, Load, Transform) is the modern variant — load raw data first, transform later.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">API</div>
+        <div class="acro-full">Application Programming Interface</div>
+        <div class="acro-short">How software systems talk to each other.</div>
+        <div class="acro-detail">A defined set of rules that lets one piece of software request services from another. When Pathed Hub sends a new client to FreeAgent, it calls FreeAgent's API. When Simpson's custom AI solution queries a customer's data, it often uses APIs. Azure OpenAI is itself accessed via API. REST APIs (using HTTP) are the most common in enterprise data work.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">BI</div>
+        <div class="acro-full">Business Intelligence</div>
+        <div class="acro-short">Reporting and analytics — dashboards, KPIs, data visualisation.</div>
+        <div class="acro-detail">The practice of using data to inform business decisions. Tools: Power BI, Qlik, Tableau, Cognos. The traditional BI layer is where Simpson started — and where most of their customer base still has day-to-day touchpoints. AI is now being layered on top of BI (Copilot in Power BI, Qlik AutoML) to move from descriptive (what happened) to predictive (what will happen) and prescriptive (what should we do).</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">SaaS</div>
+        <div class="acro-full">Software as a Service</div>
+        <div class="acro-short">Software delivered via the cloud, subscription-based.</div>
+        <div class="acro-detail">Software hosted in the cloud and accessed via browser or API — you pay a subscription rather than a one-off licence. RedactXpert is moving toward a SaaS model. Microsoft Fabric, Qlik Cloud and Azure OpenAI are all SaaS/PaaS. The shift from on-premise to SaaS is often the trigger for Simpson's engagement — customers migrating to Azure and needing their data landscape rebuilt.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">MLOps</div>
+        <div class="acro-full">Machine Learning Operations</div>
+        <div class="acro-short">The engineering discipline of deploying and maintaining AI models in production.</div>
+        <div class="acro-detail">Like DevOps for software but for ML models. Covers: model versioning, experiment tracking, deployment pipelines, monitoring, drift detection, retraining. Without MLOps, a model that works in a pilot often degrades silently in production. Azure ML, Databricks MLflow and Azure AI Foundry are the key MLOps platforms. Simpson's Responsible AI Lead and MLOps Engineer roles map directly to this.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">RBAC</div>
+        <div class="acro-full">Role-Based Access Control</div>
+        <div class="acro-short">Who can see what data, based on their job role.</div>
+        <div class="acro-detail">A security model where data access is defined by job role rather than individual user. Essential in regulated environments — a social worker should see their own caseload, not every child in the county. In AI deployments, RBAC determines what data an AI agent can query. Purview enforces RBAC across the Microsoft data estate. Comes up constantly in policing and NHS engagements.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">DPIA</div>
+        <div class="acro-full">Data Protection Impact Assessment</div>
+        <div class="acro-short">The formal risk assessment required before processing sensitive data with AI.</div>
+        <div class="acro-detail">A GDPR requirement for any high-risk data processing activity — which almost every AI deployment involving personal data qualifies as. The DPIA documents what data is processed, why, what the risks are and how they're mitigated. Simpson's Responsible AI Lead conducts or supports DPIAs on every regulated AI engagement. Mentioning this in the interview shows you understand the compliance reality.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">PII</div>
+        <div class="acro-full">Personally Identifiable Information</div>
+        <div class="acro-short">Any data that can identify a specific person.</div>
+        <div class="acro-detail">Names, addresses, email addresses, NHS numbers, police record numbers, financial account details. The whole point of RedactXpert is automatically removing PII from documents before disclosure. In AI deployments, knowing where PII is (Purview) and ensuring it's not accidentally included in model training or RAG retrieval is a core governance requirement. Special Category PII (health, race, religion) carries a higher bar under GDPR.</div>
+      </div>
+
+    </div>
+
+    <div class="acro-section-label">Architecture & agentic terms</div>
+    <div class="acro-grid">
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">PoV</div>
+        <div class="acro-full">Proof of Value</div>
+        <div class="acro-short">A time-boxed build that proves an AI use case delivers real value.</div>
+        <div class="acro-detail">Not a demo — a real, working version of the solution tested against real data in a controlled environment. A PoV de-risks the full investment by proving the technology works in the customer's context before committing to production. Usually 6–10 weeks. Simpson's standard AI engagement motion: Assessment → Readiness → PoV → Build → Scale. Almost every Simpson AI engagement includes a PoV phase.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">PoC</div>
+        <div class="acro-full">Proof of Concept</div>
+        <div class="acro-short">A quick technical demonstration that a concept is feasible.</div>
+        <div class="acro-detail">Similar to PoV but typically earlier-stage, less rigorous, and more about technical feasibility than commercial value. A PoC says "this can work." A PoV says "this delivers value in our context." In practice the terms are often used interchangeably, but if you use "PoV" in a Simpson context you're using their preferred language and signalling you understand the value-first framing.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">CoE</div>
+        <div class="acro-full">Centre of Excellence</div>
+        <div class="acro-short">A central team that owns AI standards, platforms and best practice.</div>
+        <div class="acro-detail">The organisational pattern for governing AI at scale. A CoE owns the AI policy, manages the central platform (Azure OpenAI, Copilot Studio), sets standards for responsible AI, builds reusable assets, and supports business units running their own use cases. Recommending a CoE model is part of Simpson's AI Operating Model advisory offer. You'd recommend this to Meridian Building Society.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">ROI</div>
+        <div class="acro-full">Return on Investment</div>
+        <div class="acro-short">What the business gets back relative to what it spends.</div>
+        <div class="acro-detail">For AI engagements, ROI typically comes from: time saved × hourly rate, fraud/error losses avoided, faster processing reducing headcount growth, or revenue uplift from better decisions. The Meridian example: £208k investment returning £2.4m annually = 5-month payback. Always frame ROI conservatively (lower bound) and name the assumptions — it's more credible and protects Simpson from overpromising.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">NPV</div>
+        <div class="acro-full">Net Present Value</div>
+        <div class="acro-short">The total value of future returns in today's money.</div>
+        <div class="acro-detail">A financial metric that accounts for the time value of money — £1 today is worth more than £1 in three years. The Meridian 3-year NPV of £5.8m means that all future cash flows (discounted for time) add up to £5.8m of value in today's terms. You don't need to calculate it — just understand it's the "total commercial case" number that CFOs and investment committees want to see.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">KYC</div>
+        <div class="acro-full">Know Your Customer</div>
+        <div class="acro-short">The identity verification process financial services firms must follow.</div>
+        <div class="acro-detail">A regulatory requirement for banks and building societies to verify who their customers are, assess their risk profile and monitor for money laundering. In the Meridian fraud detection use case, the Identity Verifier agent handles KYC checks. AI can dramatically accelerate KYC by automating document review, matching identities and flagging anomalies — reducing what can be a days-long manual process to seconds.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">RFP / RFI</div>
+        <div class="acro-full">Request for Proposal / Request for Information</div>
+        <div class="acro-short">Formal documents a customer sends when they want to buy something.</div>
+        <div class="acro-detail">An RFI asks "tell us about your capability." An RFP asks "give us a priced proposal for this specific requirement." Responding to RFPs and RFIs is explicitly called out in the JD as a core presales activity. The Presales AI Specialist's job is to lead the AI-specific sections — solution design, responsible AI approach, architecture, team, timeline. Quality of RFP response is often the deciding factor in a public sector procurement.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">SoW</div>
+        <div class="acro-full">Statement of Work</div>
+        <div class="acro-short">The contract document that defines what will be delivered, when and for how much.</div>
+        <div class="acro-detail">The commercial document that formalises a consulting engagement — scope, deliverables, timeline, roles, assumptions, exclusions, price. You've built this into Pathed Hub. In Simpson's world, the Presales AI Specialist contributes to SoW scoping — defining what's in, what's out, what success looks like, and what the customer needs to provide. A well-scoped SoW is what prevents costly scope creep.</div>
+      </div>
+
+    </div>
+
+    <div class="acro-section-label">Simpson-specific & sector terms</div>
+    <div class="acro-grid">
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">FCA</div>
+        <div class="acro-full">Financial Conduct Authority</div>
+        <div class="acro-short">The UK regulator for financial services firms.</div>
+        <div class="acro-detail">Regulates banks, insurers, building societies and investment firms in the UK. Has published guidance on AI and Big Data, Consumer Duty (2023 — requires firms to demonstrate good customer outcomes) and operational resilience. Any AI deployment at a firm like Meridian Building Society would need to be defensible to the FCA. Consumer Duty specifically requires firms to show AI decisions don't cause customer harm.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">ICO</div>
+        <div class="acro-full">Information Commissioner's Office</div>
+        <div class="acro-short">The UK data protection regulator — enforces GDPR.</div>
+        <div class="acro-detail">The UK regulator for data protection and privacy, enforcing GDPR and the UK Data Protection Act. Any AI system processing personal data needs to be ICO-compliant — hence DPIAs, sensitivity labels, data minimisation and purpose limitation. The ICO has published guidance specifically on AI and automated decision-making. Simpson's blue light and local government customers are particularly focused on ICO compliance.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">PDS</div>
+        <div class="acro-full">Police Digital Service</div>
+        <div class="acro-short">The shared technology and procurement body for UK policing.</div>
+        <div class="acro-detail">A national body that helps UK police forces buy and use technology. Simpson's RedactXpert is on the PDS Redaction Tool Framework — meaning any UK police force can procure it directly without running a full tender. Being on a PDS framework is a major commercial asset in the policing sector. Also relevant: the College of Policing publishes guidance on AI use in law enforcement.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">OSCAR</div>
+        <div class="acro-full">Online System for Central Accounting and Reporting</div>
+        <div class="acro-short">HM Treasury's financial reporting system — a Simpson client.</div>
+        <div class="acro-detail">The UK government's central accounting and reporting platform, used across Whitehall departments. HM Treasury appointed Simpson in April 2025 to support and improve OSCAR — a significant central government win. Demonstrates Simpson's capability in sensitive, high-visibility government data work. Useful context if the conversation turns to central government opportunities.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">ATU</div>
+        <div class="acro-full">Account Technology Unit</div>
+        <div class="acro-short">Microsoft's internal team that manages major enterprise accounts.</div>
+        <div class="acro-detail">Microsoft's field sales organisation. The ATU manages relationships with large enterprise customers. For Simpson as a partner, the relevant contacts are the ATU (who own customer relationships), the SSP (Specialist Sales Professional — the AI/Azure specialist) and the PDM (Partner Development Manager — who manages Simpson's relationship with Microsoft). Building named relationships with these people is how co-sell actually happens.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">GTM</div>
+        <div class="acro-full">Go-To-Market</div>
+        <div class="acro-short">The strategy for how a product or service reaches customers.</div>
+        <div class="acro-detail">Covers: who you're selling to (ICP — Ideal Customer Profile), what you're selling (the proposition), how you reach them (channels — direct, Microsoft co-sell, events, inbound), what you say (messaging), and how you prove it (references, case studies). The Presales AI Specialist role is explicitly described as supporting Simpson's AI go-to-market. Building the AI Assessment offer into a repeatable GTM motion is a core part of the job.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">ICP</div>
+        <div class="acro-full">Ideal Customer Profile</div>
+        <div class="acro-short">A description of the type of organisation most likely to buy and succeed.</div>
+        <div class="acro-detail">For Simpson's AI practice, the ICP is probably: UK public sector or regulated commercial, 500+ employees, existing Microsoft/Azure investment, a named CDO or Head of Data, a strategic AI mandate from the board, and a data estate that's messy enough to need help but mature enough to build on. Knowing your ICP helps qualify faster — and disqualify faster, which is equally valuable.</div>
+      </div>
+
+      <div class="acro-card" onclick="this.classList.toggle('open')">
+        <div class="acro-abbr">TOEX</div>
+        <div class="acro-full">Tackling Organised Exploitation</div>
+        <div class="acro-short">A national UK policing programme — a major Simpson reference.</div>
+        <div class="acro-detail">A national policing programme using data and analytics to tackle organised criminal exploitation — including county lines drug networks, modern slavery and VAWG (Violence Against Women and Girls). Simpson built the data infrastructure and analytics capability underpinning it. A Detective Chief Superintendent called the work "revolutionary." Referenced across multiple police forces. Shows the mission-critical, national-scale work Simpson can deliver in the blue light sector.</div>
+      </div>
+
+    </div>
+  </div><!-- /tech-acronyms -->
 
 
 <!-- ═══════════════════════════════════════════ -->

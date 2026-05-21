@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Simpson Associates · Interview Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0F2D52;
+  --navy-deep: #081A33;
+  --teal: #00B0B9;
+  --teal-light: #00D4DE;
+  --green: #6FCF73;
+  --amber: #F4B73E;
+  --coral: #FF6B5B;
+  --cream: #F7F5EF;
+  --paper: #FAFAF8;
+  --ink: #0B1726;
+  --mute: #5A6573;
+  --line: #E3E1D8;
+  --white: #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ─── TOP BAR ─── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  border-bottom: 2px solid var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-hex {
+  width: 32px; height: 36px;
+  flex-shrink: 0;
+}
+.brand-text { line-height: 1.1; }
+.brand-text .name { color: white; font-weight: 600; font-size: 15px; letter-spacing: 0.2px; }
+.brand-text .sub { color: rgba(255,255,255,0.55); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; }
+
+.nav {
+  display: flex;
+  gap: 4px;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.65);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.3px;
+}
+.nav-btn:hover { color: white; background: rgba(255,255,255,0.08); }
+.nav-btn.active { color: var(--teal); background: rgba(0,176,185,0.12); }
+.nav-btn .nav-num {
+  width: 20px; height: 20px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+.nav-btn.active .nav-num { background: var(--teal); color: var(--navy); }
+
+.topbar-pill {
+  background: rgba(0,176,185,0.15);
+  border: 1px solid rgba(0,176,185,0.3);
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--navy-deep);
+  padding: 56px 40px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  right: -80px; top: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,176,185,0.12) 0, transparent 65%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 30%; bottom: -60px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(111,207,115,0.06) 0, transparent 65%);
+  pointer-events: none;
+}
+.hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-eyebrow {
+  color: var(--teal);
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: white;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.hero h1 em { font-style: italic; color: var(--teal); }
+.hero-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 32px;
+}
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.hero-stat { }
+.hero-stat-val {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 300;
+  font-style: italic;
+  color: white;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-val span { color: var(--teal); }
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; }
+
+/* ─── MAIN LAYOUT ─── */
+.main { max-width: 1100px; margin: 0 auto; padding: 0 40px 80px; }
+
+/* ─── SECTION ─── */
+.section {
+  display: none;
+  padding-top: 48px;
+  animation: fadeIn 0.3s ease;
+}
+.section.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.section-eyebrow {
+  color: var(--teal);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--teal);
+  border-radius: 1px;
+}
+.section-header h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.section-header p {
+  color: var(--mute);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 680px;
+}
+
+/* ─── TOPIC CARDS ─── */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.topic-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.topic-card:hover { box-shadow: 0 8px 32px rgba(15,45,82,0.1); transform: translateY(-2px); }
+.topic-card.expanded { border-color: var(--navy); }
+
+.topic-card-header {
+  padding: 22px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.topic-icon {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  display: grid; place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.topic-card-meta { flex: 1; }
+.topic-tag {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+.topic-card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.topic-card .topic-preview {
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.5;
+}
+.topic-chevron {
+  color: var(--mute);
+  font-size: 14px;
+  transition: transform 0.25s ease;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.topic-card.expanded .topic-chevron { transform: rotate(90deg); color: var(--teal); }
+
+.topic-body {
+  display: none;
+  padding: 0 24px 24px;
+  border-top: 1px solid var(--cream);
+  margin-top: 0;
+}
+.topic-card.expanded .topic-body { display: block; padding-top: 20px; }
+
+.topic-body p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.topic-body p:last-child { margin-bottom: 0; }
+
+.script-block {
+  background: var(--navy);
+  color: rgba(255,255,255,0.88);
+  border-left: 3px solid var(--teal);
+  padding: 16px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.65;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+.script-block strong {
+  color: var(--teal);
+  font-style: normal;
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.stat-callout {
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.stat-callout-num {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.stat-callout-text { font-size: 13px; color: var(--mute); line-height: 1.5; }
+.stat-callout-text strong { color: var(--ink); }
+
+/* ─── CHEAT SHEET ─── */
+.tech-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0;
+}
+.tech-tab {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--mute);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.18s;
+  margin-bottom: -1px;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tech-tab:hover { color: var(--navy); }
+.tech-tab.active { color: var(--navy); border-bottom-color: var(--teal); font-weight: 600; }
+.tech-tab .tab-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.tech-tab.active .tab-dot { background: var(--teal); }
+
+.tech-panel { display: none; animation: fadeIn 0.25s ease; }
+.tech-panel.active { display: block; }
+
+.tech-hero-card {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 32px 36px;
+  color: white;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.tech-hero-card::after {
+  content: '';
+  position: absolute;
+  right: -40px; top: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0,176,185,0.2) 0, transparent 65%);
+  pointer-events: none;
+}
+.tech-hero-card .tech-hero-eyebrow {
+  color: var(--teal);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.tech-hero-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.tech-hero-card p {
+  color: rgba(255,255,255,0.75);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 680px;
+  position: relative; z-index: 1;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.tech-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px 22px;
+  transition: all 0.18s;
+}
+.tech-card:hover { border-color: var(--teal); box-shadow: 0 4px 16px rgba(15,45,82,0.08); }
+.tech-card-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.tech-card h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+.tech-card p { font-size: 13px; color: var(--mute); line-height: 1.55; }
+
+.key-phrase {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a3d6e 100%);
+  border-radius: 8px;
+  padding: 18px 22px;
+  color: white;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+  border-left: 3px solid var(--teal);
+  margin-bottom: 16px;
+}
+.key-phrase strong { color: var(--teal); font-style: normal; display: block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+
+.honest-badge {
+  background: rgba(244,183,62,0.12);
+  border: 1px solid rgba(244,183,62,0.35);
+  border-radius: 6px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.honest-badge::before { content: '⚠'; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+/* ─── QUESTIONS ─── */
+.questions-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+@media (max-width: 800px) { .questions-cols { grid-template-columns: 1fr; } }
+
+.q-group {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.q-group-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.q-group-avatar {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  background: var(--navy);
+  display: grid; place-items: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.q-group-name { font-size: 15px; font-weight: 600; color: var(--navy); }
+.q-group-role { font-size: 12px; color: var(--mute); }
+
+.q-list { padding: 8px 0; }
+.q-item {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--cream);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.q-item:last-child { border-bottom: none; }
+.q-item:hover { background: var(--paper); }
+.q-item.open { background: #f0f7f8; }
+
+.q-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.q-num {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--teal);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 26px;
+  margin-top: 2px;
+}
+.q-text { font-size: 13.5px; color: var(--ink); line-height: 1.5; font-weight: 500; flex: 1; }
+.q-arrow { color: var(--mute); font-size: 12px; flex-shrink: 0; margin-top: 3px; transition: transform 0.2s; }
+.q-item.open .q-arrow { transform: rotate(90deg); color: var(--teal); }
+
+.q-why {
+  display: none;
+  padding: 12px 0 4px 40px;
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.6;
+  font-style: italic;
+}
+.q-item.open .q-why { display: block; }
+
+.q-both {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.q-both-header {
+  padding: 18px 24px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.q-both-header::before {
+  content: '';
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--teal);
+}
+
+/* ─── DO NOT ─── */
+.donot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+.donot-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--coral);
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+.donot-card strong { color: var(--coral); display: block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+
+.demo-block {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 28px 32px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.demo-block::after {
+  content: '';
+  position: absolute;
+  right: -30px; bottom: -30px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(0,176,185,0.2) 0, transparent 65%);
+}
+.demo-block-text .eyebrow { color: var(--teal); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+.demo-block-text h3 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 300; margin-bottom: 8px; }
+.demo-block-text p { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.55; max-width: 500px; }
+
+/* ─── FOOTER ─── */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--mute);
+  margin-top: 40px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .topbar { padding: 0 20px; }
+  .topbar-pill { display: none; }
+  .nav-btn span { display: none; }
+  .hero { padding: 40px 20px 36px; }
+  .hero h1 { font-size: 36px; }
+  .main { padding: 0 20px 60px; }
+  .hero-stats { gap: 20px; }
+  .footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="brand">
+    <svg class="brand-hex" viewBox="0 0 100 115" fill="none">
+      <path d="M50,0 L100,28.87 L100,86.6 L50,115.47 L0,86.6 L0,28.87 Z" fill="#00B0B9"/>
+      <text x="50" y="72" text-anchor="middle" fill="white" font-family="sans-serif" font-weight="800" font-size="50">S</text>
+    </svg>
+    <div class="brand-text">
+      <div class="name">Simpson Associates</div>
+      <div class="sub">Second Interview · Prep Guide</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <button class="nav-btn active" onclick="showSection('topics', this)">
+      <span class="nav-num">1</span>
+      <span>Topics & Talking Points</span>
+    </button>
+    <button class="nav-btn" onclick="showSection('tech', this)">
+      <span class="nav-num">2</span>
+      <span>Tech Cheat Sheet</span>
+    </button>
+    <button class="nav-btn" onclick="showSection('questions', this)">
+      <span class="nav-num">3</span>
+      <span>Questions to Ask</span>
+    </button>
+  </nav>
+  <div class="topbar-pill">CTO · CEO Round</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Luke Craven · Presales AI Specialist</div>
+    <h1>You are the person who turns <em>AI ambition</em><br>into a plan customers can actually deliver.</h1>
+    <p class="hero-sub">CTO: Ashley Armstrong &nbsp;·&nbsp; CEO: Giles Horwood &nbsp;·&nbsp; York HQ<br>They're not checking your CV. They're answering: will this person make us better?</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val"><span>64%</span></div>
+        <div class="hero-stat-label">Azure OpenAI YoY growth</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val"><span>3.3%</span></div>
+        <div class="hero-stat-label">M365 users with paid Copilot</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val"><span>83%</span></div>
+        <div class="hero-stat-label">ChatGPT workplace adoption</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val"><span>£2.4m</span></div>
+        <div class="hero-stat-label">5-month payback on AI use case</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 1: TOPICS                          -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-topics" class="section active">
+  <div class="section-header">
+    <div class="section-eyebrow">Section One</div>
+    <h2>Points to raise & talking points</h2>
+    <p>Click each card to reveal the full talking point with a suggested script. Open all the ones that feel natural to you — you don't need every single one.</p>
+  </div>
+
+  <div class="topics-grid">
+
+    <!-- ADOPTION GAP -->
+    <div class="topic-card" onclick="toggleCard(this)">
+      <div class="topic-card-header">
+        <div class="topic-icon" style="background:rgba(0,176,185,0.12)">📊</div>
+        <div class="topic-card-meta">
+          <div class="topic-tag">Lead with this · Market intelligence</div>
+          <h3>The AI adoption gap — your killer opening stat</h3>
+          <p class="topic-preview">Infrastructure is bought, but daily usage is the challenge. This frames your entire value.</p>
+        </div>
+        <div class="topic-chevron">▶</div>
+      </div>
+      <div class="topic-body">
+        <p>This is the most commercially relevant thing you can say in the room. It positions you as someone who understands <em>why Simpson Associates exists</em> — not just what they do.</p>
+        <div class="stat-callout">
+          <div class="stat-callout-num">64%</div>
+          <div class="stat-callout-text"><strong>Azure OpenAI is growing at 64% year-on-year</strong> (2024–2025). 85% of Fortune 500 companies already run on Azure. The infrastructure investment is real and accelerating.</div>
+        </div>
+        <div class="stat-callout">
+          <div class="stat-callout-num">3.3%</div>
+          <div class="stat-callout-text"><strong>Only 3.3% of M365 users have paid Copilot seats</strong>. Workplace conversion rates hover around 35%. Compare that to ChatGPT's workplace adoption of 83%.</div>
+        </div>
+        <div class="script-block">
+          <strong>Say something like</strong>
+          "Azure OpenAI is growing at 64% year-on-year, 85% of Fortune 500 companies are already on Azure. The infrastructure investment is real. But Copilot adoption in the workplace is only around 3.3% of M365 seats, with conversion rates of 35%. ChatGPT's workplace adoption is 83% by comparison. So enterprises are buying the platform but not using the AI. That's not a technology problem — it's a use case, adoption and trust problem. And that's exactly what a presales AI specialist is there to solve."
+        </div>
+        <p>Works for both Giles (CEO, commercial validation) and Ashley (CTO, adoption-first / responsible AI approach). Drop it early, ideally in the first five minutes.</p>
+      </div>
+    </div>
+
+    <!-- BEECH TREE -->
+    <div class="topic-card" onclick="toggleCard(this)">
+      <div class="topic-card-header">
+        <div class="topic-icon" style="background:rgba(111,207,115,0.15)">💡</div>
+        <div class="topic-card-meta">
+          <div class="topic-tag">Strategic context · Show you've done homework</div>
+          <h3>The Beech Tree investment — what it actually means</h3>
+          <p class="topic-preview">Don't just mention it. Show you understand the transition it signals.</p>
+        </div>
+        <div class="topic-chevron">▶</div>
+      </div>
+      <div class="topic-body">
+        <p>The October 2025 investment from Beech Tree Private Equity (typically £10m–£40m) wasn't just funding — it was a mandate. Beech Tree's playbook is buy-and-build, productisation and scalable recurring revenue.</p>
+        <div class="script-block">
+          <strong>Say something like</strong>
+          "The Beech Tree investment signals something specific — the mandate to move from a great consultancy to a scalable, product-led AI business. Organic growth, agentic AI capability, productisation of IP, potential M&A. That's a different operating model from 18 months ago. The Presales AI Specialist role feels like part of that transition — not just winning deals, but building a repeatable AI go-to-market."
+        </div>
+        <p>Four explicit investment priorities from the announcement: accelerate organic growth, broaden agentic AI capabilities, expand sector offerings, pursue strategic acquisitions.</p>
+      </div>
+    </div>
+
+    <!-- REDACTXPERT -->
+    <div class="topic-card" onclick="toggleCard(this)">
+      <div class="topic-card-header">
+        <div class="topic-icon" style="background:rgba(244,183,62,0.12)">🏆</div>
+        <div class="topic-card-meta">
+          <div class="topic-tag">Product intelligence · Productisation</div>
+          <h3>RedactXpert — the productisation playbook</h3>
+          <p class="topic-preview">Their most mature AI product. Show you understand it as a strategic model, not just a feature.</p>
+        </div>
+        <div class="topic-chevron">▶</div>
+      </div>
+      <div class="topic-body">
+        <p>RedactXpert is an AI-powered auto-redaction tool built on Azure AI/Cognitive Services. It's on the Police Digital Service (PDS) Framework, approved by the National Police Chiefs' Council, and HCPC is now a live SaaS customer.</p>
+        <div class="stat-callout">
+          <div class="stat-callout-num">50%</div>
+          <div class="stat-callout-text"><strong>Cleveland Police reduced redaction time by 50%</strong> after 8-week rollout. Co-marketed story published on microsoft.com. The only PDS-approved redaction tool.</div>
+        </div>
+        <div class="script-block">
+          <strong>Say something like</strong>
+          "RedactXpert is a really important proof point — not just as a product, but as a model. You took a consultancy capability, productised it, got it onto the PDS Framework, and now HCPC is a SaaS customer. That's a repeatable pattern. The question is what the next RedactXpert looks like — and I'd want to be part of that conversation."
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUR AI WORK -->
+    <div class="topic-card" onclick="toggleCard(this)">
+      <div class="topic-card-header">
+        <div class="topic-icon" style="background:rgba(15,45,82,0.08)">🤖</div>
+        <div class="topic-card-meta">
+          <div class="topic-tag">Your differentiator · Bring it early</div>
+          <h3>Your hands-on AI work — ETL Bot & Pathed Hub</h3>
+          <p class="topic-preview">Don't wait to be asked. This is what makes you different from every other presales candidate.</p>
+        </div>
+        <div class="topic-chevron">▶</div>
+      </div>
+      <div class="topic-body">
+        <p>Most candidates applying for this role will have <em>talked about</em> AI. You've actually <em>built with it</em> — across multiple tools, in production, with real commercial outcomes.</p>
+        <div class="script-block">
+          <strong>Say something like</strong>
+          "I want to be transparent about something because it's relevant to the role. At my last role I built what I called an ETL Bot using Google Gemini Gems — Google's equivalent of agents. Trained on a specific ETL methodology, pointed at a data source, it generated a complete Qlik pipeline in minutes rather than days. I shared that with leadership as a way to reduce billable consultancy time. More recently I've been building Pathed Hub — an end-to-end business automation tool I co-developed with Claude, integrating with FreeAgent, Outlook and generating branded Statements of Work automatically. I'm not just advising on AI — I'm actively using it to build things. That's the lens I'd bring to your customers."
+        </div>
+        <p><strong>Also mention:</strong> Lovable (website in half a day), Microsoft Copilot Frontier tools, the Claude/Copilot CoWork integration for workflow automation.</p>
+      </div>
+    </div>
+
+    <!-- AGENTIC AI -->
+    <div class="topic-card" onclick="toggleCard(this)">
+      <div class="topic-card-header">
+        <div class="topic-icon" style="background:rgba(0,176,185,0.1)">⚡</div>
+        <div class="topic-card-meta">
+          <div class="topic-tag">Technical credibility · For Ashley</div>
+          <h3>Agentic AI — align with their stated direction</h3>
+          <p class="topic-preview">Ashley wrote the piece. Giles named it in the Beech Tree announcement. Use it.</p>
+        </div>
+        <div class="topic-chevron">▶</div>
+      </div>
+      <div class="topic-body">
+        <p>Ashley Armstrong published "Agentic AI: Making AI Work For You" — covering intelligent agents, orchestration, event-driven architectures and small language models with sector examples. This is the CTO's public technical vision.</p>
+        <div class="script-block">
+          <strong>Say something like</strong>
+          "I read your piece on agentic AI — the shift from AI that suggests to AI that acts, the orchestration layer, event-driven architectures. That's exactly the direction I've been building toward. The key presales challenge with agentic AI is that customers need to trust it before they'll let it act autonomously. That's where the responsible AI design, the human-in-the-loop conversation, and the governance framing become the commercial unlock — not a compliance overhead."
+        </div>
+        <p>Key concept: <strong>the autonomy spectrum</strong> — AI that informs → suggests → drafts → acts with review → acts autonomously. Every customer engagement starts with "where on this spectrum are you ready to go, and why?"</p>
+      </div>
+    </div>
+
+    <!-- CUSTOMER PORTFOLIO -->
+    <div class="topic-card" onclick="toggleCard(this)">
+      <div class="topic-card-header">
+        <div class="topic-icon" style="background:rgba(111,207,115,0.12)">🗂</div>
+        <div class="topic-card-meta">
+          <div class="topic-tag">Shows homework · Commercial awareness</div>
+          <h3>Their customer portfolio — sector signals</h3>
+          <p class="topic-preview">Show you've read the case studies. Notice what's growing and what's new.</p>
+        </div>
+        <div class="topic-chevron">▶</div>
+      </div>
+      <div class="topic-body">
+        <p><strong>Heartland:</strong> Blue light & policing (60%+ of UK forces), Local Government (NYC, Swansea, Wirral, Westmorland), Social Housing, Charities (BHF, Alzheimer's, RBL, Wildlife Trusts), Healthcare (St John Ambulance, HCPC, Commissioning Alliance).</p>
+        <p><strong>Growth frontier:</strong> "A UK Insurance Leader" (new, anonymised), JW Filshill (wholesale, AI-powered insights), Assosia (machine learning), HGF (IP firm, Fabric + Power BI). Commercial/FS is clearly being pushed post-investment.</p>
+        <p><strong>Central Government:</strong> HM Treasury (OSCAR), TOEX (national policing programme), "A UK Regulatory Body" (anonymised — likely significant).</p>
+        <div class="script-block">
+          <strong>Say something like</strong>
+          "I noticed you now have a UK Insurance Leader case study — is Financial Services a deliberate sector push post-investment, and would AI use cases in FS be within scope for this role?"
+        </div>
+      </div>
+    </div>
+
+    <!-- MICROSOFT CO-SELL -->
+    <div class="topic-card" onclick="toggleCard(this)">
+      <div class="topic-card-header">
+        <div class="topic-icon" style="background:rgba(0,176,185,0.1)">🤝</div>
+        <div class="topic-card-meta">
+          <div class="topic-tag">Commercial acumen · Partner leverage</div>
+          <h3>Microsoft partnership — the untapped lever</h3>
+          <p class="topic-preview">They're a Partner of the Year. Show you understand what co-sell really means.</p>
+        </div>
+        <div class="topic-chevron">▶</div>
+      </div>
+      <div class="topic-body">
+        <p>Simpson holds <strong>5 Azure specialisations</strong> including AI Platform and Build AI Apps. They're a Fabric Featured Partner, Fabric Databases Featured Partner, and Purview Implementation Partner. The Cleveland Police story is live on microsoft.com.</p>
+        <div class="script-block">
+          <strong>Say something like</strong>
+          "The Cleveland Police story being on microsoft.com as a co-marketed customer story is worth a significant multiple of a case study on your own website. The Partner of the Year award opens doors in the Microsoft ATU and SSP network that most partners can't access. I'd want to understand how actively you're using Microsoft co-sell, and where you see the biggest untapped leverage."
+        </div>
+        <p>Best-in-class mid-market partners run 30–40% of new bookings as Microsoft-influenced. That's the bar worth targeting — and it's a legitimate question to raise.</p>
+      </div>
+    </div>
+
+    <!-- CULTURE -->
+    <div class="topic-card" onclick="toggleCard(this)">
+      <div class="topic-card-header">
+        <div class="topic-icon" style="background:rgba(111,207,115,0.12)">⭐</div>
+        <div class="topic-card-meta">
+          <div class="topic-tag">Culture intelligence · GPTW data</div>
+          <h3>Great Place to Work — the 97% stat</h3>
+          <p class="topic-preview">86% say it's a great place to work. 97% trust without micromanagement. Use these specifically.</p>
+        </div>
+        <div class="topic-chevron">▶</div>
+      </div>
+      <div class="topic-body">
+        <p>Simpson has been certified for 5 consecutive years. Updated April 2026. 86% of employees say it's great (vs 54% UK average). 97% say management trusts them without watching over their shoulders. 98% feel welcomed on joining. 45% of the team have been there less than 2 years.</p>
+        <div class="script-block">
+          <strong>Say something like</strong>
+          "Your Great Place To Work scores are genuinely impressive — 97% trust without micromanagement is the one that caught my eye. For this role, what does that look like in practice? Is the expectation that I'm setting my own AI presales agenda and pulling Sales into conversations proactively, rather than waiting for briefs?"
+        </div>
+        <p>The 45% under-2-years tenure figure is also worth raising: <em>"I noticed a significant proportion of the team are relatively new — is that post-investment hiring? How are you managing knowledge transfer at that pace?"</em></p>
+      </div>
+    </div>
+
+  </div><!-- /topics-grid -->
+
+  <!-- DON'T DO -->
+  <div style="margin-top: 8px; padding-top: 32px; border-top: 1px solid var(--line);">
+    <div class="section-eyebrow" style="margin-bottom: 16px;">Equally important</div>
+    <h3 style="font-family: 'Fraunces', serif; font-size: 26px; font-weight: 300; color: var(--navy); margin-bottom: 16px; letter-spacing: -0.01em;">Things not to do</h3>
+    <div class="donot-grid">
+      <div class="donot-card"><strong>Don't lead with Qlik</strong>It's evidence of delivery capability but not why they hired you. Lead with AI. Qlik is context, not the headline.</div>
+      <div class="donot-card"><strong>Don't over-claim on Databricks</strong>Say "demo-level familiar with Fabric, actively closing my Databricks gap" and move on. Honesty here protects you in a technical interview.</div>
+      <div class="donot-card"><strong>Don't ask about salary or benefits</strong>This is a CTO/CEO round. Save it for HR or after an offer is on the table.</div>
+      <div class="donot-card"><strong>Don't monologue</strong>This is two senior leaders. Ask them things, listen, and build on what they say. The best interviews are conversations.</div>
+      <div class="donot-card"><strong>Don't skip the adoption stat</strong>It's your best piece of market intelligence. If you don't use it, you've left your strongest opening on the table.</div>
+      <div class="donot-card"><strong>Don't be modest about Pathed Hub</strong>You built a production business automation tool using AI as a co-developer. That is unusual. Own it confidently.</div>
+    </div>
+  </div>
+
+  <!-- DEMO BLOCK -->
+  <div class="demo-block">
+    <div class="demo-block-text">
+      <div class="eyebrow">Optional · High impact</div>
+      <h3>The demo moment</h3>
+      <p>If the opportunity arises — and with a CTO in the room it probably will — open with North Yorkshire (their real customer, their real numbers), then offer to show the Meridian FS example with the full architecture, cost, ROI and roadmap. Nobody else interviewing for this role will have built something like this.</p>
+    </div>
+    <div style="color: var(--teal); font-size: 48px; flex-shrink: 0; position: relative; z-index: 1;">⚡</div>
+  </div>
+
+</div><!-- /section-topics -->
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 2: TECH CHEAT SHEET                -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-tech" class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Section Two</div>
+    <h2>Technical cheat sheet</h2>
+    <p>Everything you need to hold a credible AI conversation with a CTO. Click each platform tab. Remember: your job is to understand and advise — not to build. You're the most credible person in the sales conversation, not the most credible person in the server room.</p>
+  </div>
+
+  <div class="tech-tabs">
+    <button class="tech-tab active" onclick="showTech('azure', this)"><span class="tab-dot"></span>Azure</button>
+    <button class="tech-tab" onclick="showTech('openai', this)"><span class="tab-dot"></span>Azure OpenAI</button>
+    <button class="tech-tab" onclick="showTech('fabric', this)"><span class="tab-dot"></span>Microsoft Fabric</button>
+    <button class="tech-tab" onclick="showTech('copilot', this)"><span class="tab-dot"></span>Copilot</button>
+    <button class="tech-tab" onclick="showTech('databricks', this)"><span class="tab-dot"></span>Databricks</button>
+    <button class="tech-tab" onclick="showTech('purview', this)"><span class="tab-dot"></span>Purview</button>
+    <button class="tech-tab" onclick="showTech('agentic', this)"><span class="tab-dot"></span>Agentic AI</button>
+    <button class="tech-tab" onclick="showTech('responsible', this)"><span class="tab-dot"></span>Responsible AI</button>
+  </div>
+
+  <!-- AZURE -->
+  <div id="tech-azure" class="tech-panel active">
+    <div class="tech-hero-card">
+      <div class="tech-hero-eyebrow">The Foundation</div>
+      <h3>Microsoft Azure</h3>
+      <p>Microsoft's cloud computing platform — a global network of data centres that organisations rent access to rather than owning hardware. The analogy: Azure is the electricity grid. You don't build your own power station — you plug in and pay for what you use.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-label">Core function</div>
+        <h4>What Azure actually does</h4>
+        <p>Stores data, runs applications, and hosts technology solutions without the customer owning physical servers. Pay-as-you-go model. Everything Simpson builds for customers — AI models, data pipelines, dashboards, RedactXpert — runs on Azure.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Why it matters here</div>
+        <h4>Simpson's Azure specialisations</h4>
+        <p>AI Platform on Azure, Build AI Apps on Azure, Analytics, Data Warehouse Migration, Enterprise App Migration. Four Solutions Partner designations: Data & AI, Digital & App Innovation, Infrastructure, Security.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Key phrase</div>
+        <h4>"Inside your Azure tenant"</h4>
+        <p>When Simpson talks about keeping customer data "inside your Azure tenant" — they mean the customer's data never leaves their own secure, organisation-owned slice of the Microsoft cloud. Critical for policing and NHS customers.</p>
+      </div>
+    </div>
+    <div class="key-phrase"><strong>Your one-liner</strong>"Azure is the secure cloud foundation on which everything Simpson builds is deployed — it's the platform layer beneath Fabric, Azure OpenAI, Purview and the custom AI solutions."</div>
+  </div>
+
+  <!-- AZURE OPENAI -->
+  <div id="tech-openai" class="tech-panel">
+    <div class="tech-hero-card">
+      <div class="tech-hero-eyebrow">The AI Engine</div>
+      <h3>Azure OpenAI Service</h3>
+      <p>Microsoft's secure, enterprise-grade version of the AI models that power ChatGPT (GPT-4, GPT-4o etc.), hosted inside a customer's own Azure environment. It's the raw AI reasoning engine — no interface, no buttons. Developers and data engineers point it at business problems.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-label">Azure OpenAI vs ChatGPT</div>
+        <h4>Same engine, different wrapper</h4>
+        <p>ChatGPT is OpenAI's consumer product. Azure OpenAI is the same underlying models, but deployed securely inside Microsoft's enterprise cloud. Customer data stays inside their Azure tenancy — never used to train OpenAI's models.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">vs Claude vs Gemini</div>
+        <h4>All LLMs, different makers</h4>
+        <p>ChatGPT (OpenAI/Microsoft), Claude (Anthropic — what you use here), Gemini (Google — what you used for the ETL Bot). Fundamentally the same category. Concepts like prompting, grounding, agents, hallucination are transferable across all three.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Simpson use</div>
+        <h4>Built into their AI products</h4>
+        <p>Azure OpenAI is the reasoning layer inside RedactXpert, the AI Front-Door product, and every Custom AI Solution Simpson builds. The "Build AI Apps on Microsoft Azure" specialisation specifically covers this capability.</p>
+      </div>
+    </div>
+    <div class="key-phrase"><strong>Your one-liner</strong>"Azure OpenAI is the customisable AI foundation — the engine under the bonnet. Copilot is the finished product. Simpson uses both: Copilot where it fits, Azure OpenAI where something bespoke is needed."</div>
+    <div class="honest-badge">The adoption stat lives here: Azure OpenAI growing 64% YoY, 85% Fortune 500 on Azure — but only 3.3% M365 users have paid Copilot seats. The infrastructure is being bought, the daily usage is the challenge.</div>
+  </div>
+
+  <!-- FABRIC -->
+  <div id="tech-fabric" class="tech-panel">
+    <div class="tech-hero-card">
+      <div class="tech-hero-eyebrow">The Data Platform</div>
+      <h3>Microsoft Fabric</h3>
+      <p>Microsoft's all-in-one modern data platform. Not just a data lake — it covers data storage (OneLake), engineering, pipelines, real-time analytics, Power BI, and has Copilot baked in throughout. Think of it as the entire data journey from ingestion to insight, unified.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-label">Key component</div>
+        <h4>OneLake</h4>
+        <p>The storage layer within Fabric. A single logical data lake for the whole organisation — no more data silos. Data from different systems lands here. Direct Lake mode lets Power BI query it directly at speed, without copying data.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Why it matters</div>
+        <h4>Simpson's biggest GTM motion</h4>
+        <p>Simpson is a Fabric Featured Partner and Fabric Databases Featured Partner — recognised at launch. Mick Horne's team produces regular Fabric thought leadership. Many customers are mid-migration to Fabric now.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">AI dimension</div>
+        <h4>Copilot everywhere in Fabric</h4>
+        <p>Copilot is woven through Fabric — for code review, documentation, pipeline generation, data exploration. Simpson positions this as "the first widespread use of generative AI across data engineering and analysis."</p>
+      </div>
+    </div>
+    <div class="key-phrase"><strong>Your one-liner</strong>"Fabric is where the data lives, governed and ready. Azure OpenAI is what reasons over it. Power BI is what surfaces it. They work together — Fabric is the foundation that makes the AI trustworthy."</div>
+    <div class="honest-badge">Your honest level: demo-level familiarity with Fabric and the Azure data platform. You're not a Fabric engineer. You understand the architecture and can discuss it credibly in presales. That's all the role needs.</div>
+  </div>
+
+  <!-- COPILOT -->
+  <div id="tech-copilot" class="tech-panel">
+    <div class="tech-hero-card">
+      <div class="tech-hero-eyebrow">The Front End AI</div>
+      <h3>Microsoft Copilot</h3>
+      <p>The finished AI product built on top of Azure OpenAI — Microsoft's branded user experience layer embedded into tools people already use: Word, Excel, Outlook, Teams, Power BI, Microsoft Fabric. The car with a steering wheel, built on the Azure OpenAI engine.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-label">M365 Copilot</div>
+        <h4>The everyday productivity layer</h4>
+        <p>Summarises meetings in Teams, drafts emails in Outlook, creates presentations in PowerPoint, analyses data in Excel. Requires M365 E3/E5 and a paid Copilot licence (~£24.70/user/month). This is where the 3.3% adoption stat lives.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Copilot Studio</div>
+        <h4>The agent builder</h4>
+        <p>Low-code tool for building custom Copilot-style agents without writing everything from scratch. Simpson uses this to build bespoke AI workflows — the orchestration layer for their agentic builds. The middle ground between out-of-the-box Copilot and full Azure OpenAI custom development.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Copilot in Fabric/Power BI</div>
+        <h4>AI for data and analytics</h4>
+        <p>Generates DAX measures, writes M code, creates reports from natural language prompts. Simpson position this as unlocking "Generative AI for data engineering and analysis" — directly relevant to their core consultancy work.</p>
+      </div>
+    </div>
+    <div class="key-phrase"><strong>Copilot Readiness Assessment</strong>Simpson sells a structured Copilot readiness engagement covering: data hygiene, SharePoint sprawl, sensitivity labels (Purview), RBAC, identity, use-case prioritisation, adoption planning, and consumption monitoring. Positioned as de-risking a six or seven-figure licence investment.</div>
+    <div class="honest-badge">You actively use Copilot Frontier tools and the Claude/Copilot CoWork integration daily. You understand the gap between "bought Copilot" and "using Copilot" from personal experience — that's a genuine talking point.</div>
+  </div>
+
+  <!-- DATABRICKS -->
+  <div id="tech-databricks" class="tech-panel">
+    <div class="tech-hero-card">
+      <div class="tech-hero-eyebrow">The Data Science Platform</div>
+      <h3>Databricks</h3>
+      <p>A unified data and AI platform built on a Lakehouse architecture — combining the best of data lakes and data warehouses. Where Fabric is Microsoft-native and analyst-friendly, Databricks is engineering and data-science heavy. Used by British Heart Foundation and for complex ML workloads.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-label">When to lead with Databricks</div>
+        <h4>The data science use case</h4>
+        <p>Heavy ML engineering, MLflow model management, Unity Catalog for governance, complex Spark workloads, genomics, real-time fraud detection, organisations already running Snowflake or Databricks. BHF moved to Databricks for exactly these reasons.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">When to lead with Fabric</div>
+        <h4>The Microsoft-native use case</h4>
+        <p>M365-heavy customer, analyst persona dominant, Power BI already deployed, procurement wants a single Microsoft contract, public sector EA agreements. Councils and police forces typically. Fabric is the default; Databricks is the specialist choice.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Agentic AI on Databricks</div>
+        <h4>Mosaic AI & Model Serving</h4>
+        <p>Databricks' AI portfolio includes Mosaic AI for model training and deployment, Model Serving for real-time inference, and MLflow for experiment tracking. The JD specifically references "Databricks Model Serving" — worth knowing the term even if you're not hands-on.</p>
+      </div>
+    </div>
+    <div class="honest-badge">Be honest here: aware of Databricks but not hands-on. "I'm closing that gap — Lakehouse Fundamentals badge is on my list, and I'd shadow Simpson's Principal Lakehouse Architect team in the first 90 days." That's the right answer. Don't overstate.</div>
+  </div>
+
+  <!-- PURVIEW -->
+  <div id="tech-purview" class="tech-panel">
+    <div class="tech-hero-card">
+      <div class="tech-hero-eyebrow">The Governance Layer</div>
+      <h3>Microsoft Purview</h3>
+      <p>Microsoft's data governance, compliance and data security platform. Classifies data, tracks lineage, applies sensitivity labels, manages access, and creates an audit trail. For regulated customers like policing and NHS — it's non-negotiable. Simpson holds a Purview Implementation Partner designation.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-label">Why it matters for AI</div>
+        <h4>Responsible AI needs Purview</h4>
+        <p>Before you can safely apply AI to data, you need to know what data you have, where it lives, who can access it, and how sensitive it is. Purview answers all four questions. It's the governance foundation that makes AI trustworthy — especially in regulated sectors.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Practical use</div>
+        <h4>Sensitivity labels & lineage</h4>
+        <p>Sensitivity labels (e.g. Confidential, Highly Sensitive) travel with data across SharePoint, Teams, emails, Fabric. Lineage shows where data originated and how it's been transformed. Audit trails are essential for police and NHS DPIA compliance.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Presales angle</div>
+        <h4>The responsible AI unlock</h4>
+        <p>In a Copilot Readiness Assessment, Purview is always part of the scope. "Do you have sensitivity labels in place? Is your SharePoint governed?" Without Purview foundations, Copilot is a data oversharing risk. With Purview, it's a productivity engine.</p>
+      </div>
+    </div>
+    <div class="key-phrase"><strong>Your one-liner</strong>"Purview is what makes AI deployable in regulated environments. It's the difference between 'we want to use AI' and 'we're allowed to use AI.'"</div>
+  </div>
+
+  <!-- AGENTIC AI -->
+  <div id="tech-agentic" class="tech-panel">
+    <div class="tech-hero-card">
+      <div class="tech-hero-eyebrow">The Direction of Travel</div>
+      <h3>Agentic AI</h3>
+      <p>The shift from AI that suggests or drafts to AI that acts — autonomously taking actions, calling tools, orchestrating workflows and making decisions within defined boundaries. The Beech Tree investment specifically funds this capability. Ashley wrote the blog on it.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-label">The autonomy spectrum</div>
+        <h4>5 levels of AI action</h4>
+        <p><strong>1.</strong> Information only (surfaces facts) → <strong>2.</strong> Suggests (human chooses) → <strong>3.</strong> Drafts (human reviews) → <strong>4.</strong> Acts with review (human can override) → <strong>5.</strong> Acts autonomously (no human in the loop). Most customers today are at 2–3. Agentic AI is 4–5.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Multi-agent pattern</div>
+        <h4>Specialised agents + orchestrator</h4>
+        <p>Multiple specialised agents (e.g. Transaction Sentry, Identity Verifier, Access Guardian) coordinated by an orchestrator that routes decisions based on confidence and impact. High-impact decisions get routed to a human adjudicator. This is the Meridian fraud detection architecture.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Built on</div>
+        <h4>Azure OpenAI + Copilot Studio</h4>
+        <p>Agent reasoning runs on Azure OpenAI. Agent orchestration, tool definitions, knowledge sources and escalation policies are configured in Copilot Studio. Fabric provides the real-time data context. Purview governs the data. AI Foundry handles evaluation and red-teaming.</p>
+      </div>
+    </div>
+    <div class="key-phrase"><strong>The presales angle</strong>The challenge with selling agentic AI is that customers need to trust it before they'll let it act. Your job is to design the governance guardrails — human-in-the-loop thresholds, audit trails, scope by design — that make autonomous action feel safe, not scary.</div>
+  </div>
+
+  <!-- RESPONSIBLE AI -->
+  <div id="tech-responsible" class="tech-panel">
+    <div class="tech-hero-card">
+      <div class="tech-hero-eyebrow">The Commercial Unlock</div>
+      <h3>Responsible AI</h3>
+      <p>Not a compliance overhead — a presales accelerator. In regulated sectors like policing, NHS and housing, a procurement-ready responsible AI annex inside the proposal is a deal accelerator. It also de-risks Simpson against reputational harm in sectors where one bad headline costs years of trust.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-label">Microsoft's 6 principles</div>
+        <h4>The framework to reference</h4>
+        <p><strong>Fairness</strong> · <strong>Reliability & Safety</strong> · <strong>Privacy & Security</strong> · <strong>Inclusiveness</strong> · <strong>Transparency</strong> · <strong>Accountability</strong>. Aligns with NIST AI RMF and the UK Government AI Playbook. This is the Microsoft Responsible AI Standard v2.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">In a regulated proposal</div>
+        <h4>Four things to make explicit</h4>
+        <p>1. Where data lives and the Azure boundary. 2. How the model is grounded (RAG, citations, what hallucination controls exist). 3. Human-in-the-loop pattern for high-stakes decisions with audit trail. 4. Bias/drift testing approach and red-team prompts.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-label">Policing/NHS overlay</div>
+        <h4>Sector-specific requirements</h4>
+        <p>DPIA, Algorithmic Transparency Recording Standard, ICO guidance, FCA AI guidance (FS), College of Policing standards (blue light), NHS AI guidance. The SIRO/IG sign-off chain matters. Government AI Playbook is the UK policy anchor.</p>
+      </div>
+    </div>
+    <div class="key-phrase"><strong>The key insight for the CTO interview</strong>"Responsible AI isn't the reason we do AI slowly — it's the reason customers buy AI confidently. In regulated sectors, the governance design is the commercial unlock."</div>
+  </div>
+
+</div><!-- /section-tech -->
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 3: QUESTIONS                       -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-questions" class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Section Three</div>
+    <h2>Questions to ask them</h2>
+    <p>Click any question to see why it's worth asking. Aim for 6–8 across the conversation — not a list read from a page. The best ones open a genuine conversation rather than invite a yes/no.</p>
+  </div>
+
+  <div class="questions-cols">
+
+    <!-- ASHLEY -->
+    <div class="q-group">
+      <div class="q-group-header">
+        <div class="q-group-avatar">🔧</div>
+        <div>
+          <div class="q-group-name">Ashley Armstrong</div>
+          <div class="q-group-role">CTO · Director of Solutions</div>
+        </div>
+      </div>
+      <div class="q-list">
+
+        <div class="q-item" onclick="toggleQ(this)">
+          <div class="q-item-row">
+            <div class="q-num">1</div>
+            <div class="q-text">"You wrote the Agentic AI piece earlier this year. Where are you on that journey — is multi-agent autonomous work live in production, or still in design phase for most customers?"</div>
+            <div class="q-arrow">▶</div>
+          </div>
+          <div class="q-why">Shows you've read his content. Forces him to be honest about current maturity vs aspiration. The answer tells you whether Beech Tree's agentic mandate is funded vision or near-term reality.</div>
+        </div>
+
+        <div class="q-item" onclick="toggleQ(this)">
+          <div class="q-item-row">
+            <div class="q-num">2</div>
+            <div class="q-text">"How do you see us working together in practice — is my job to translate your technical vision into commercial language, or is this a co-creation relationship where I feed market signals back to shape what we build?"</div>
+            <div class="q-arrow">▶</div>
+          </div>
+          <div class="q-why">Defines the relationship up front. Shows you're thinking about the working dynamic, not just the job spec. A CTO who says "co-creation" is someone you can really work with.</div>
+        </div>
+
+        <div class="q-item" onclick="toggleQ(this)">
+          <div class="q-item-row">
+            <div class="q-num">3</div>
+            <div class="q-text">"On Fabric versus Databricks in the AI space — are you seeing customers land more naturally on one, or is it genuinely case-by-case?"</div>
+            <div class="q-arrow">▶</div>
+          </div>
+          <div class="q-why">Technical credibility question that you already know the answer to (Microsoft-native = Fabric, data science heavy = Databricks). Lets him talk, shows you're current, and you learn their actual sales motion.</div>
+        </div>
+
+        <div class="q-item" onclick="toggleQ(this)">
+          <div class="q-item-row">
+            <div class="q-num">4</div>
+            <div class="q-text">"RedactXpert is clearly the flagship AI product. What's next — is AI Front-Door, demand forecasting, or something else most likely to become the next repeatable SaaS offering?"</div>
+            <div class="q-arrow">▶</div>
+          </div>
+          <div class="q-why">Shows product awareness and strategic thinking. Positions you as someone already thinking about the roadmap, not just the current portfolio. This is a CTO-level conversation.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GILES -->
+    <div class="q-group">
+      <div class="q-group-header">
+        <div class="q-group-avatar">📈</div>
+        <div>
+          <div class="q-group-name">Giles Horwood</div>
+          <div class="q-group-role">CEO · Director-Owner</div>
+        </div>
+      </div>
+      <div class="q-list">
+
+        <div class="q-item" onclick="toggleQ(this)">
+          <div class="q-item-row">
+            <div class="q-num">5</div>
+            <div class="q-text">"If we sat here in 12 months and you said 'that's been a success' — what does the AI practice look like that it doesn't today?"</div>
+            <div class="q-arrow">▶</div>
+          </div>
+          <div class="q-why">The single most important question you can ask a CEO and CTO together. The answer tells you whether expectations are realistic, whether they're aligned with each other, and what you're actually measured on.</div>
+        </div>
+
+        <div class="q-item" onclick="toggleQ(this)">
+          <div class="q-item-row">
+            <div class="q-num">6</div>
+            <div class="q-text">"The Beech Tree announcement specifically named agentic AI as an investment priority. Are you building that capability ahead of customer demand, or following the pipeline?"</div>
+            <div class="q-arrow">▶</div>
+          </div>
+          <div class="q-why">Strategic sharpness question. "Ahead of demand" = ambitious, potentially resource-intensive. "Following the pipeline" = commercial discipline. Neither is wrong — but the answer shapes how you'd operate.</div>
+        </div>
+
+        <div class="q-item" onclick="toggleQ(this)">
+          <div class="q-item-row">
+            <div class="q-num">7</div>
+            <div class="q-text">"I noticed a UK Insurance Leader case study — is Financial Services a deliberate sector push, or did that come through the existing network?"</div>
+            <div class="q-arrow">▶</div>
+          </div>
+          <div class="q-why">Shows you've read the case studies carefully. FS is thinly covered — if it's a deliberate push it expands your mandate significantly. If it came through the network it tells you the real growth sectors.</div>
+        </div>
+
+        <div class="q-item" onclick="toggleQ(this)">
+          <div class="q-item-row">
+            <div class="q-num">8</div>
+            <div class="q-text">"The infrastructure investment is clearly there — Azure OpenAI growing 64% year-on-year, 85% of Fortune 500 on Azure. But Copilot adoption day-to-day is still a challenge sector-wide at around 3.3%. How are you positioning Simpson's role in solving that adoption gap?"</div>
+            <div class="q-arrow">▶</div>
+          </div>
+          <div class="q-why">This is where you deploy the adoption stat naturally as a question rather than a statement. It shows market intelligence and invites a commercial conversation about where Simpson adds value beyond the build.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /questions-cols -->
+
+  <!-- BOTH -->
+  <div class="q-both">
+    <div class="q-both-header">For both · Culture, team & role</div>
+    <div class="q-list">
+
+      <div class="q-item" onclick="toggleQ(this)">
+        <div class="q-item-row">
+          <div class="q-num">9</div>
+          <div class="q-text">"About 45% of the team have joined in the last two years — that's a significant growth phase. How are you managing knowledge transfer and making sure new people come up to speed on the sector depth that makes Simpson credible?"</div>
+          <div class="q-arrow">▶</div>
+        </div>
+        <div class="q-why">Shows you've looked at the Factorial team page. The answer reveals onboarding quality and whether institutional knowledge is being protected during rapid growth. Relevant to your own experience joining.</div>
+      </div>
+
+      <div class="q-item" onclick="toggleQ(this)">
+        <div class="q-item-row">
+          <div class="q-num">10</div>
+          <div class="q-text">"Your Great Place To Work scores are impressive — 97% trust without micromanagement stood out. For this role specifically, what does that look like in practice?"</div>
+          <div class="q-arrow">▶</div>
+        </div>
+        <div class="q-why">Uses real data to ask a real culture question. Signals you've done your research and you care about the working environment, not just the role spec.</div>
+      </div>
+
+      <div class="q-item" onclick="toggleQ(this)">
+        <div class="q-item-row">
+          <div class="q-num">11</div>
+          <div class="q-text">"The Presales AI Specialist and Presales Data Governance Specialist roles appear to have been created at the same time. How do those roles interact, and who do I build the closest working relationship with in the first 90 days?"</div>
+          <div class="q-arrow">▶</div>
+        </div>
+        <div class="q-why">Shows you've noticed a structural decision they've made. The answer reveals the internal org design and your immediate peer group. Both roles are new — this is a genuine insight question.</div>
+      </div>
+
+      <div class="q-item" onclick="toggleQ(this)">
+        <div class="q-item-row">
+          <div class="q-num">12</div>
+          <div class="q-text">"What's the one thing about this role that wouldn't be obvious from reading the job description?"</div>
+          <div class="q-arrow">▶</div>
+        </div>
+        <div class="q-why">The best closing question. Gets an honest answer you can't get from research. It signals confidence and genuine curiosity — and the answer often reveals what they really care about.</div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /section-questions -->
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>Built for Luke Craven · Simpson Associates Interview Prep · May 2026</div>
+  <div>Inspired by Zygens DDAD · Pathed Consulting</div>
+</div>
+
+<script>
+// Navigation
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.main').offsetTop - 80, behavior: 'smooth' });
+}
+
+// Topic cards
+function toggleCard(card) {
+  const wasOpen = card.classList.contains('expanded');
+  document.querySelectorAll('.topic-card').forEach(c => c.classList.remove('expanded'));
+  if (!wasOpen) card.classList.add('expanded');
+}
+
+// Tech tabs
+function showTech(id, btn) {
+  document.querySelectorAll('.tech-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tech-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tech-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Questions
+function toggleQ(item) {
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>

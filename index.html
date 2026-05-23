@@ -49,7 +49,7 @@
   h1 em { font-style: italic; color: #00B0B9; }
   .lede { color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1.6; margin-bottom: 48px; max-width: 520px; }
 
-  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
   @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } h1 { font-size: 36px; } }
 
   .card {
@@ -107,6 +107,13 @@
       <div class="card-eyebrow">Presales AI Tool · Concept</div>
       <h2>AI Use Case Prioritiser</h2>
       <p>Score any AI use case across Value, Risk and Readiness — then build a full plan with architecture, cost, ROI and roadmap. Pre-loaded with North Yorkshire Council and Meridian Building Society.</p>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="https://lukecraven36.github.io/pathed-budget/" target="_blank" rel="noopener">
+      <div class="card-eyebrow" style="color:#5af5a6">Personal Tool · Budget</div>
+      <h2>Budget Tracker</h2>
+      <p>Mobile-first personal budget tracker. Live balance, forecast end-of-month, due-before-payday alerts, daily spend limit and category breakdown. Data saved locally in your browser.</p>
       <div class="card-arrow">→</div>
     </a>
   </div>
